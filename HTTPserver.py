@@ -36,7 +36,7 @@ while True:
     # imprime na tela o que o cliente enviou ao servidor
     print (request.decode('utf-8'))
     request_splited = request.decode('utf-8').split(' ')
-    # declaracao da resposta do servidor
+    #declaracao da resposta do servidor
     try:
         if request_splited[1] == "/" or request_splited[1] == "/index.html":
             request_splited[1] = "index.html"
