@@ -46,14 +46,14 @@ while True:
     if request_splited[0] != "GET":
         print("comando desconhecido")
         with open("badRequest.html", 'r') as file:
-             http_response = file.read()
+             http_response = "HTTP/1.1 400 Bad Request\r\n\r\n" + file.read() +"\r\n"
     else:
         try:
             with open(request_splited[1], 'r') as file:
-                http_response = file.read()
+                http_response = "HTTP/1.1 200 OK\r\n\r\n" + file.read() + "\r\n"
         except:
             with open("notFound.html", 'r') as file:
-                http_response = file.read() 
+                http_response = "HTTP/1.1 404 Not Found\r\n\r\n" + file.read() + "\r\n"
     # servidor retorna o que foi solicitado pelo cliente (neste caso a resposta e generica)
     client_connection.send(http_response.encode('utf-8'))
     # encerra a conexao
